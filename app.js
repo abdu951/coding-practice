@@ -9,6 +9,7 @@ const EventEmitter = require('events');
 const sayHello = require('./greeting')
 const math = require('./math')
 const { finished } = require('stream')
+const { startupSnapshot } = require('v8')
 
 
 /*fs.readFile('example.txt', 'utf8', (err, data) => {
@@ -130,7 +131,43 @@ fs.mkdirSync('new directory2')
     console.error('errorrrrrrrr:', err)
 }
 console.log('directory content', file)
- })*/
+ })
 const files = fs.readdirSync('./')
 console.log('directory content', files)
+
+const dirname = 'newdirectory3'
+
+if (fs.existsSync(dirname)) {
+    console.log('directory exist')
+}else {
+console.log('directory does not exist')
+}
+
+fs.rmdir('new directory2', (err) => {
+    if (err) {
+        return console.err('error in directory removing process:', err)
+    }
+    console.log('remove directory successfuly')
+})
+
+fs.rename('newDirectory', 'addis', (err) => {
+    if (err) {
+        console.error('error meta:', err)
+    }
+    console.log('renamed')
+})
+
+fs.stat('./', (err, stats) => {
+    if (err) {
+        console.log('error meta:', err)
+    }
+    console.log('directory stats:', stats)
+})
+*/
+fs.watch('./', (eventType, fileName) => {
+    console.log(`Event: ${eventType}`)
+    if (fileName) {
+        console.log(`filname: ${fileName}`)
+    }
+})
 

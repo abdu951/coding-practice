@@ -1,4 +1,4 @@
-const { dir } = require('console')
+const { dir, error } = require('console')
 const fs = require('fs')
 const http = require('http')
 const path = require('path')
@@ -6,6 +6,9 @@ const os = require('os')
 const url = require('url')
 const crypto = require('crypto')
 const EventEmitter = require('events');
+const sayHello = require('./greeting')
+const math = require('./math')
+const { finished } = require('stream')
 
 
 /*fs.readFile('example.txt', 'utf8', (err, data) => {
@@ -61,10 +64,73 @@ const emitter = new EventEmitter();
 emitter.on('greet', () => console.log("Hello!"));
 emitter.emit('greet');
 const buf = Buffer.from('Abdu', 'utf-8');
-console.log(buf);*/
+console.log(buf);
 
 
 const readStream = fs.createReadStream('example.txt');
 readStream.pipe(process.stdout);
 
+const message = sayHello('abdbbbbbbbbbbb')
+console.log(message)
+
+console.log(math.add(5,8))
+console.log(math.subtract(10,4))
+
+const readeblestream = fs.createReadStream('example.txt', {encoding: 'utf8', })
+readeblestream.on('data', (chunk) => {
+    console.log(chunk)
+})
+readeblestream.on('end', () => {
+    console.error('finished reading')
+})
+readeblestream.on(error, (err) => {
+    console.error('error', err)
+})
+
+const writablestream = fs.createWriteStream('output.txt2')
+writablestream.write('hello ')
+writablestream.write('world!')
+writablestream.end()
+
+writablestream.on('finish', () => {
+    console.log('finished writing')
+})
+
+const readline = require('readline')
+const readeblestream = fs.createReadStream('example.txt')
+const rl = readline.createInterface({input: readeblestream})
+
+rl.on('line', (line) => {
+    console.log('line:', line)
+})
+rl.on('close', () => {
+    console.log('file transfer completed')
+})
+const readeblestream = fs.createReadStream('example.txt')
+const writablestream = fs.createWriteStream('output.txt3')
+
+readeblestream.pipe(writablestream)
+
+writablestream.on('finish', () => {
+    console.log('file copied successfully')
+})
+
+fs.mkdir('newDirectory', (err) => {
+    if(err) {
+        console.error('error in creating directory:', err)
+    }
+    console.log('created directory successfuly')
+})
+
+fs.mkdirSync('new directory2')
+ console.log('created directory successfuly')
+
+ fs.readdir('./', (err, file) => {
+    if (err) {
+    console.error('errorrrrrrrr:', err)
+}
+console.log('directory content', file)
+ })*/
+const files = fs.readdirSync('./')
+console.log('directory content', files)
 

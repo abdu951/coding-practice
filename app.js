@@ -163,11 +163,30 @@ fs.stat('./', (err, stats) => {
     }
     console.log('directory stats:', stats)
 })
-*/
+
 fs.watch('./', (eventType, fileName) => {
     console.log(`Event: ${eventType}`)
     if (fileName) {
         console.log(`filname: ${fileName}`)
     }
+})*/
+
+const emitter = new EventEmitter()
+
+emitter.on('test1',() => {
+    console.log('an event has occured in test 1')
 })
+
+emitter.on('error', (err) => {
+    console.error('Error event:', err.message)
+})
+
+try {
+    emitter.emit('test1')
+    emitter.removeListener('test1')
+    emitter.emit('test1')
+
+} catch (error) {
+    emitter.emit('error', error) 
+}
 

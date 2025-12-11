@@ -12,13 +12,16 @@ const { finished } = require('stream')
 const { startupSnapshot } = require('v8')
 
 
-/*fs.readFile('example.txt', 'utf8', (err, data) => {
+/* --------how to read a file-------
+fs.readFile('example.txt', 'utf8', (err, data) => {
     if (err) {
         console.error(err)
         return
     }
     console.log(data)
 })
+
+ -----------how to write a file---------
 const content = 'hello, world and node'
 fs.writeFile('output.txt', content, (err) => {
     if (err) {
@@ -28,6 +31,7 @@ fs.writeFile('output.txt', content, (err) => {
     console.log('file written successfully')
 })
 
+----------------how to create a server-----------
 const server = http.createServer((req, res) => {
     res.statusCode = 200
     res.setHeader('content-type', 'text/plain')
@@ -38,28 +42,36 @@ server.listen(3000, 'localhost', () => {
     console.log('server running at http://localhost:3000/')
 })
 
+---- connecting file by using path method----------
 const directory = '/user/localkkvfkkffkbfkkvmfkvm'
 const filename = 'example.txtkmvkfmvkmfkvm'
 
 const fullpath = path.join(directory, filename)
 console.log(fullpath)
 
+---------about os ------------
 console.log('platform:', os.platform())
 console.log('platform:', os.arch())
 console.log('totalmemory:', os.totalmem())
 console.log('platform:', os.freemem())
 
+
+---------about url-------------
 const myurl = new URL ('http://www.example.com:8080/path/name?search=test#hashvalue')
 
 console.log('host', myurl.host)
 console.log('parameter', myurl.searchParams.get('test'))
 console.log('pathname', myurl.pathname)
 
+
+----------about crypto------------ 
 const hash = crypto.createHash('sha256')
 hash.update('Hello, World')
 
 console.log(hash.digest('hex'))
 
+
+----------about emitter-------------
 const emitter = new EventEmitter();
 
 emitter.on('greet', () => console.log("Hello!"));
@@ -67,7 +79,7 @@ emitter.emit('greet');
 const buf = Buffer.from('Abdu', 'utf-8');
 console.log(buf);
 
-
+---------about readstream------------
 const readStream = fs.createReadStream('example.txt');
 readStream.pipe(process.stdout);
 
@@ -88,6 +100,7 @@ readeblestream.on(error, (err) => {
     console.error('error', err)
 })
 
+------------writablestream--------------
 const writablestream = fs.createWriteStream('output.txt2')
 writablestream.write('hello ')
 writablestream.write('world!')
@@ -97,6 +110,7 @@ writablestream.on('finish', () => {
     console.log('finished writing')
 })
 
+---------------about readline-------------
 const readline = require('readline')
 const readeblestream = fs.createReadStream('example.txt')
 const rl = readline.createInterface({input: readeblestream})
@@ -107,6 +121,8 @@ rl.on('line', (line) => {
 rl.on('close', () => {
     console.log('file transfer completed')
 })
+
+-------------about pipe (treansfer) or copy file---------------
 const readeblestream = fs.createReadStream('example.txt')
 const writablestream = fs.createWriteStream('output.txt3')
 
@@ -116,12 +132,16 @@ writablestream.on('finish', () => {
     console.log('file copied successfully')
 })
 
+--------------creating new directory by async---------------------
+
 fs.mkdir('newDirectory', (err) => {
     if(err) {
         console.error('error in creating directory:', err)
     }
     console.log('created directory successfuly')
 })
+
+------------creating new directory by sync method-----------
 
 fs.mkdirSync('new directory2')
  console.log('created directory successfuly')
@@ -135,6 +155,8 @@ console.log('directory content', file)
 const files = fs.readdirSync('./')
 console.log('directory content', files)
 
+
+-----------checking directory----------------
 const dirname = 'newdirectory3'
 
 if (fs.existsSync(dirname)) {
@@ -143,6 +165,8 @@ if (fs.existsSync(dirname)) {
 console.log('directory does not exist')
 }
 
+------------remove directory--------------------
+
 fs.rmdir('new directory2', (err) => {
     if (err) {
         return console.err('error in directory removing process:', err)
@@ -150,6 +174,8 @@ fs.rmdir('new directory2', (err) => {
     console.log('remove directory successfuly')
 })
 
+
+------------------rename directory--------------
 fs.rename('newDirectory', 'addis', (err) => {
     if (err) {
         console.error('error meta:', err)
@@ -157,6 +183,8 @@ fs.rename('newDirectory', 'addis', (err) => {
     console.log('renamed')
 })
 
+
+------------ about directory statstics-------------
 fs.stat('./', (err, stats) => {
     if (err) {
         console.log('error meta:', err)
@@ -164,13 +192,15 @@ fs.stat('./', (err, stats) => {
     console.log('directory stats:', stats)
 })
 
+-------------watching event change------------
 fs.watch('./', (eventType, fileName) => {
     console.log(`Event: ${eventType}`)
     if (fileName) {
         console.log(`filname: ${fileName}`)
     }
-})*/
+})
 
+------------about EvenEmitter---------------
 const emitter = new EventEmitter()
 
 emitter.on('test1',() => {
@@ -189,4 +219,4 @@ try {
 } catch (error) {
     emitter.emit('error', error) 
 }
-
+*/

@@ -13,8 +13,9 @@ server.listen(port, () => {
     console.log(`server is running on http://localhost:${port}`)
 })
 
+-------------creating server get method------------?
 const server = http.createServer((req, res) => {
-    if (req.method === 'GET' & req.url === '/') {
+    if (req.method === 'GET' && req.url === '/') {
         res.writeHead(200, {'content-type': 'text/plain'})
         res.end('welcome to homepage')
     }else {
@@ -30,6 +31,7 @@ server.listen(port, () => {
     console.log(`server is running on http://localhost:${port}`)
 })
 
+-------------creating server post method------------?
 const server = http.createServer((req, res) => {
     if (req.method === 'POST' & req.url === '/submit') {
         let body = ''
@@ -55,6 +57,7 @@ server.listen(port, () => {
     console.log(`server is running on http://localhost:${port}`)
 })
 
+-------------creating server query(parameter) method------------?
 const server = http.createServer((req, res) => {
     if (req.method === 'GET' & req.url.startsWith('/search')) {
         const queryobject = url.parse(req.url, true).query
@@ -77,6 +80,7 @@ server.listen(port, () => {
     console.log(`server is running on http://localhost:${port}`)
 })
 
+----------- about routes------------
 const routes = {
     '/': (req, res) => {
         res.writeHead(200,{'content-type': 'text-plain'})
@@ -94,6 +98,7 @@ const routes = {
     }
 }
 
+--------------about pathname--------------
 const server = http.createServer((req, res) => {
     const { pathname } = url.parse(req.url)
     if (routes[pathname]) {
@@ -109,6 +114,7 @@ server.listen(port, () => {
     console.log(`server is running on http://localhost:${port}`)
 })
 
+-------------about dynamic pathname(id)-----------
 const server = http.createServer((req, res) => {
     const { pathname } = url.parse(req.url)
     if (pathname.startsWith('/user/')) {
@@ -127,6 +133,7 @@ server.listen(port, () => {
     console.log(`server is running on http://localhost:${port}`)
 })
 
+-------------about middleware (authentication)-------------------
 function logrequest(req,res,next) {
     console.log(`${req.method} request made to ${req.url}`)
     next(req,res)
@@ -151,8 +158,9 @@ const port = 3000
 
 server.listen(port, () => {
     console.log(`server is running on http://localhost:${port}`)
-})*/
+})
 
+--------------about encoded data (form submition)----------------
 const server = http.createServer((req, res) => {
     if (req.method === 'POST' & req.url === '/submit') {
         let data = ''
@@ -178,4 +186,4 @@ const port = 3000
 server.listen(port, () => {
     console.log(`server is running on http://localhost:${port}`)
 })
-  
+ */ 

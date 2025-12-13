@@ -55,12 +55,7 @@ app.get('/things/:name/:id', (req, res) => {
 
 app.use((req, res) => {
     res.status(404).send('sorry something went wrong');
-});*/ 
-
-// ----------simple routes-----------
-app.get('/', (req, res) => {
-    res.send('this is alwayshome page')
-})
+});
 
 app.get('/error',() => {
     throw new Error('something went wrong')
@@ -70,6 +65,22 @@ app.get('/error',() => {
 app.use((err, req, res, next) => {
     console.error(err.message)
     res.send('this is an inernal server error')
+
+-----------------templete engine routes----------------
+ app.set('view engine', 'ejs')
+
+app.get('/', (req, res) => {
+    const username = 'seya'
+    res.render('index', {username})
+})
+})
+
+---------------how to serve static files routes in express------------
+app.use('/public', express.static('public'))
+app.use('/images', express.static('images'))*/
+// ----------simple routes-----------
+app.get('/', (req, res) => {
+    res.send('this is home page')
 })
 
 app.listen(port, () => {

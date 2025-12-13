@@ -1,13 +1,15 @@
 import express from 'express'
 import router from './route.js'
+import multer from 'multer'
 
 
 const app = express()
 const port = 3000
+const upload = multer()  
 
 //app.use('/user',router)
 
-app.use(express.json())
+//app.use(express.json())
 
 
 // note: normal middleware site always before routes or at the top--------------
@@ -81,6 +83,16 @@ app.use('/images', express.static('images'))*/
 // ----------simple routes-----------
 app.get('/', (req, res) => {
     res.send('this is home page')
+})
+
+
+
+app.use(express.urlencoded({extended: true}))
+app.use(upload.array())
+
+app.post('/form', (req, res) => {
+    console.log(req.body)
+    res.send('form received successfully')
 })
 
 app.listen(port, () => {

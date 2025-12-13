@@ -20,7 +20,8 @@
   "homepage": "https://github.com/abdu951/coding-practice#readme",
   "dependencies": {
     "ejs": "^3.1.10",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "multer": "^2.0.2"
   },
   "devDependencies": {
     "nodemon": "^3.1.11"

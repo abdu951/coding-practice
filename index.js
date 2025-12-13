@@ -10,11 +10,21 @@ const port = 3000
 app.use(express.json())
 
 
-// ----------simple routes-----------
-app.get('/', (req, res) => {
-    res.send('this is home route')
+// note: normal middleware site always before routes or at the top--------------
+/*app.use('/about', (req, res, next) => {
+    console.log('start at: '+Date.now())
+
+    res.on('finish', () => {
+        console.log('end at: '+Date.now())
+    })
+    next()
 })
 
+app.get('/about', (req, res) => {
+    console.log('middle at: '+Date.now() )
+    res.send('this is about page')
+})
+-----------------http methods routes ----------------
 app.post('/users', (req, res) => {
     const { name, email } = req.body
     res.json({
@@ -37,6 +47,30 @@ app.delete('/users/:id', (req, res) => {
     })
 })
 
+------------- question multiple parameters routes (i check it in version 4 express)(([1,9]{4}), (*)) --------------
+app.get('/things/:name/:id', (req, res) => {
+    const { name, id } = req.params
+    res.json({ name, id })
+})
+
+app.use((req, res) => {
+    res.status(404).send('sorry something went wrong');
+});*/ 
+
+// ----------simple routes-----------
+app.get('/', (req, res) => {
+    res.send('this is alwayshome page')
+})
+
+app.get('/error',() => {
+    throw new Error('something went wrong')
+})
+
+// note: error middleware site always after routes or at the bottom--------------
+app.use((err, req, res, next) => {
+    console.error(err.message)
+    res.send('this is an inernal server error')
+})
 
 app.listen(port, () => {
     console.log(`server in running on http://localhost:${port}`)

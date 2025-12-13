@@ -2,10 +2,20 @@ import express from 'express'
 import router from './route.js'
 import multer from 'multer'
 
-
+const storage = multer.diskStorage({
+    destination: 'uploads',
+    filename: (req, res, cb) => {
+        cb(null, file.filename + '-' + Date.now()+ file.originalname)
+    }
+})
 const app = express()
 const port = 3000
-const upload = multer()  
+const upload = multer({
+    storage,
+    limits: {
+        fileSize: 1024000
+    }
+})  
 
 //app.use('/user',router)
 
@@ -88,10 +98,11 @@ app.get('/', (req, res) => {
 
 
 app.use(express.urlencoded({extended: true}))
-app.use(upload.array())
+app.use(upload.single('image'))
 
 app.post('/form', (req, res) => {
     console.log(req.body)
+    console.log(req.file)
     res.send('form received successfully')
 })
 

@@ -2,22 +2,15 @@ import express from 'express'
 import router from './route.js'
 import multer from 'multer'
 import { store } from './config/multer.js'
-import mongoose from 'mongoose'
+import { connectDb } from './config/db.js'
+import { person } from './model/person.js'
 
 
 const app = express()
 const port = 3000
-const MONGODB_URI = 'mongodb+srv://ab-mongo:hibret1923@cluster0.cxdsbro.mongodb.net'
-const upload = multer({
-    storage: store,
-    limits: {
-        fileSize: 3024000
-    }
-})  
 
-await mongoose.connect(MONGODB_URI).then(() => {
-    console.log('database connected successfully')
-})
+await connectDb()
+
 
 //app.use('/user',router)
 
@@ -91,13 +84,15 @@ app.get('/', (req, res) => {
 
 ---------------how to serve static files routes in express------------
 app.use('/public', express.static('public'))
-app.use('/images', express.static('images'))*/
-// ----------simple routes-----------
-app.get('/', (req, res) => {
-    res.send('this is home page')
-})
+app.use('/images', express.static('images'))
 
-
+//-----pass urlencoded & normal form data and also uploading & storing file by using multer routes------------
+const upload = multer({
+    storage: store,
+    limits: {
+        fileSize: 3024000
+    }
+})  
 
 app.use(express.urlencoded({extended: true}))
 app.use(upload.single('image'))
@@ -106,6 +101,23 @@ app.post('/form', (req, res) => {
     console.log(req.body)
     console.log(req.file)
     res.send('form received successfully')
+})*/
+
+// ----------simple routes-----------
+app.get('/', (req, res) => {
+    res.send('this is home page')
+})
+
+app.post('/person', express.json(), async(req, res) => {
+    const { name, age, email } = req.body
+    const newperson = new person({
+        name,
+        age,
+        email
+    })
+    await newperson.save()
+    console.log(newperson)
+    res.send('person added successfully')
 })
 
 app.listen(port, () => {

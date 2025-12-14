@@ -124,8 +124,10 @@ app.get('/', (req, res) => {
 })
 
 app.put('/person', async(req, res) => {
-    const { name } = req.body
-    const persondata = await person.find({name})
+    const { id } = req.body
+    const persondata = await person.findOne(id)
+    persondata.age = 33
+    await persondata.save()
     console.log(persondata)
     res.send('person updated successfully')
 })

@@ -1,21 +1,23 @@
 import express from 'express'
 import router from './route.js'
 import multer from 'multer'
+import { store } from './config/multer.js'
+import mongoose from 'mongoose'
 
-const storage = multer.diskStorage({
-    destination: 'uploads',
-    filename: (req, res, cb) => {
-        cb(null, file.filename + '-' + Date.now()+ file.originalname)
-    }
-})
+
 const app = express()
 const port = 3000
+const MONGODB_URI = 'mongodb+srv://ab-mongo:hibret1923@cluster0.cxdsbro.mongodb.net'
 const upload = multer({
-    storage,
+    storage: store,
     limits: {
-        fileSize: 1024000
+        fileSize: 3024000
     }
 })  
+
+await mongoose.connect(MONGODB_URI).then(() => {
+    console.log('database connected successfully')
+})
 
 //app.use('/user',router)
 

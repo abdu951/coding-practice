@@ -11,6 +11,8 @@ const port = 3000
 
 await connectDb()
 
+app.use(express.json())
+
 
 //app.use('/user',router)
 
@@ -101,14 +103,10 @@ app.post('/form', (req, res) => {
     console.log(req.body)
     console.log(req.file)
     res.send('form received successfully')
-})*/
-
-// ----------simple routes-----------
-app.get('/', (req, res) => {
-    res.send('this is home page')
 })
 
-app.post('/person', express.json(), async(req, res) => {
+// ----------in this routes: creating data in database by using post method-----------
+app.post('/person', async(req, res) => {
     const { name, age, email } = req.body
     const newperson = new person({
         name,
@@ -118,6 +116,18 @@ app.post('/person', express.json(), async(req, res) => {
     await newperson.save()
     console.log(newperson)
     res.send('person added successfully')
+})*/
+
+// ----------simple routes-----------
+app.get('/', (req, res) => {
+    res.send('this is home page')
+})
+
+app.put('/person', async(req, res) => {
+    const { name } = req.body
+    const persondata = await person.find({name})
+    console.log(persondata)
+    res.send('person updated successfully')
 })
 
 app.listen(port, () => {

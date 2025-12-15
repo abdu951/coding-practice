@@ -123,7 +123,7 @@ app.post('/person', async(req, res) => {
     } catch (error) {
         res.send(error.message)
     }
-})
+})*/
 
 // ----------in this routes: updating data in database by using put method-----------
 
@@ -133,7 +133,7 @@ app.put('/person', async(req, res) => {
     
     console.log(persondata)
     res.send('person updated successfully')
-})*/
+})
 
 // ----------in this routes: deleting data in database by using delete method-----------
 

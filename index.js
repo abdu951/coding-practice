@@ -133,7 +133,7 @@ app.put('/person', async(req, res) => {
     
     console.log(persondata)
     res.send('person updated successfully')
-})
+})*/
 
 // ----------in this routes: deleting data in database by using delete method-----------
 
@@ -141,7 +141,7 @@ app.delete('/person/:id', async(req, res) => {
     const { id } = req.params
     await person.findByIdAndDelete(id)
     res.send('person deleted successfully')
-})*/
+})
 
 // ----------simple routes-----------
 app.get('/', (req, res) => {

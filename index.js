@@ -105,7 +105,7 @@ app.post('/form', (req, res) => {
     console.log(req.body)
     console.log(req.file)
     res.send('form received successfully')
-})
+})*/
 
 // ----------in this routes: creating data in database by using post method-----------
 
@@ -123,7 +123,7 @@ app.post('/person', async(req, res) => {
     } catch (error) {
         res.send(error.message)
     }
-})*/
+})
 
 // ----------in this routes: updating data in database by using put method-----------
 

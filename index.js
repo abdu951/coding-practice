@@ -4,6 +4,7 @@ import multer from 'multer'
 import { store } from './config/multer.js'
 import { connectDb } from './config/db.js'
 import { person } from './model/person.js'
+import cookieParser from 'cookie-parser'
 
 
 const app = express()
@@ -12,6 +13,7 @@ const port = 3000
 await connectDb()
 
 app.use(express.json())
+app.use(cookieParser())
 
 
 //app.use('/user',router)
@@ -106,30 +108,50 @@ app.post('/form', (req, res) => {
 })
 
 // ----------in this routes: creating data in database by using post method-----------
+
 app.post('/person', async(req, res) => {
-    const { name, age, email } = req.body
-    const newperson = new person({
-        name,
-        age,
-        email
-    })
-    await newperson.save()
-    console.log(newperson)
-    res.send('person added successfully')
+    try {
+        const {name, age, email} = req.body
+        const newperson = new person ({
+            name,
+            age,
+            email
+        })
+        await newperson.save()
+        console.log(newperson)
+        res.send('this person is valid')
+    } catch (error) {
+        res.send(error.message)
+    }
+})
+
+// ----------in this routes: updating data in database by using put method-----------
+
+app.put('/person', async(req, res) => {
+    const { id } = req.body
+    const persondata = await person.findByIdAndUpdate(id, {age: 900}, {new: true})
+    
+    console.log(persondata)
+    res.send('person updated successfully')
+})
+
+// ----------in this routes: deleting data in database by using delete method-----------
+
+app.delete('/person/:id', async(req, res) => {
+    const { id } = req.params
+    await person.findByIdAndDelete(id)
+    res.send('person deleted successfully')
 })*/
 
 // ----------simple routes-----------
 app.get('/', (req, res) => {
+    res.cookie('bro', 'seya')
     res.send('this is home page')
 })
 
-app.put('/person', async(req, res) => {
-    const { id } = req.body
-    const persondata = await person.findOne(id)
-    persondata.age = 33
-    await persondata.save()
-    console.log(persondata)
-    res.send('person updated successfully')
+app.get('/fetch', (req, res) => {
+    console.log(req.cookies)
+    res.send('this is fetch page')
 })
 
 app.listen(port, () => {

@@ -6,6 +6,8 @@ import { connectDb } from './config/db.js'
 import { person } from './model/person.js'
 import cookieParser from 'cookie-parser'
 import session from 'express-session'
+import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 
 
 const app = express()
@@ -183,21 +185,17 @@ app.get('/visit', (req, res) => {
 app.get('/remove-visit', (req, res) => {
     req.session.destroy()
     res.send('session removed successfully')
-})*/
-
-const users = []
-
-// ----------simple routes-----------
-app.get('/', (req, res) => {
-    res.send('this is home page')
 })
 
+
+// ----------register: this is about authentication by using session method in routes-----------
 app.post('/register', async(req, res) => {
     const { username, password} = req.body 
     users.push({username, password})
     res.send('user registered successfully')
 })
 
+// ----------login: this is about authentication by using session method in routes-----------
 app.post('/login', async(req, res) => {
     const { username, password} = req.body  
     const user = users.find(u => u.username === username)
@@ -209,13 +207,55 @@ app.post('/login', async(req, res) => {
     res.send('user logged in successfully')
 })
 
+// ----------dashboard: this is about authentication by using session method in routes-----------
 app.get('/dashboard', (req,res) => {
     if (!req.session.user) {
         return res.send('unoutorized')
     }
     res.send(`welcom ,${req.session.user.username}`)
+})*/
+const users = []
+
+// ----------simple routes-----------
+app.get('/', (req, res) => {
+    res.send('this is home page')
 })
 
+// ----------register: this is about authentication by using jwt method in routes-----------
+app.post('/register', async(req, res) => {
+    const { username, password} = req.body 
+    const hashedpassword = await bcrypt.hash(password, 10)
+    users.push({username, password: hashedpassword})
+    res.send('user registered successfully')
+})
+
+// ----------login: this is about authentication by using jwt method in routes-----------
+app.post('/login', async(req, res) => {
+    const { username, password} = req.body  
+    const user = users.find(u => u.username === username)
+    
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+        return res.send('not autorized')
+    }
+    const token = jwt.sign({username}, 'test#secret')
+    res.send({token})
+})
+
+// ----------dashboard: this is about authentication by using jwt method in routes-----------
+app.get('/dashboard', (req,res) => {
+    try{
+       const token = req.header('authorization')
+    const decodedtoken = jwt.verify(token, 'test#secret')
+    if (decodedtoken.username) {
+        res.send(`welcom ,${decodedtoken.username}`)
+    }
+    res.send('access denied')
+    }
+    catch (error) {
+        res.send('access denied')
+    }
+    
+})
 
 app.listen(port, () => {
     console.log(`server in running on http://localhost:${port}`)

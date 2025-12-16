@@ -183,6 +183,11 @@ app.get('/visit', (req, res) => {
     }
 })
 
+app.get('/remove-visit', (req, res) => {
+    req.session.destroy()
+    res.send('session removed successfully')
+})
+
 app.listen(port, () => {
     console.log(`server in running on http://localhost:${port}`)
 })

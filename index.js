@@ -105,7 +105,7 @@ app.post('/form', (req, res) => {
     console.log(req.body)
     console.log(req.file)
     res.send('form received successfully')
-})*/
+})
 
 // ----------in this routes: creating data in database by using post method-----------
 
@@ -141,17 +141,24 @@ app.delete('/person/:id', async(req, res) => {
     const { id } = req.params
     await person.findByIdAndDelete(id)
     res.send('person deleted successfully')
-})
+})*/
 
 // ----------simple routes-----------
 app.get('/', (req, res) => {
     res.cookie('bro', 'seya')
     res.send('this is home page')
 })
-
+// ----------this is all about cookies by using routes-----------
+// SO this is a middleware to check all: app.use(cookieParser())
+// ----------this is about how to get cookies by using routes-----------
 app.get('/fetch', (req, res) => {
     console.log(req.cookies)
     res.send('this is fetch page')
+})
+// ----------this is about how to remove cookies by using routes-----------
+app.get('/remove-cookie', (req, res) => {
+    res.clearCookie('bro')
+    res.send('cookie removed successfully')
 })
 
 app.listen(port, () => {

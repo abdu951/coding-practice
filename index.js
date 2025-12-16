@@ -5,6 +5,7 @@ import { store } from './config/multer.js'
 import { connectDb } from './config/db.js'
 import { person } from './model/person.js'
 import cookieParser from 'cookie-parser'
+import session from 'express-session'
 
 
 const app = express()
@@ -14,6 +15,11 @@ await connectDb()
 
 app.use(express.json())
 app.use(cookieParser())
+app.use(session({
+    secret: 'sample secret',
+    resave: false,
+    saveUninitialized: false
+}))
 
 
 //app.use('/user',router)
@@ -141,14 +147,15 @@ app.delete('/person/:id', async(req, res) => {
     const { id } = req.params
     await person.findByIdAndDelete(id)
     res.send('person deleted successfully')
-})*/
+})
 
+// ----------this is all about cookies by using routes-----------
 // ----------simple routes-----------
 app.get('/', (req, res) => {
     res.cookie('bro', 'seya')
     res.send('this is home page')
 })
-// ----------this is all about cookies by using routes-----------
+
 // SO this is a middleware to check all: app.use(cookieParser())
 // ----------this is about how to get cookies by using routes-----------
 app.get('/fetch', (req, res) => {
@@ -159,6 +166,21 @@ app.get('/fetch', (req, res) => {
 app.get('/remove-cookie', (req, res) => {
     res.clearCookie('bro')
     res.send('cookie removed successfully')
+})*/
+
+// ----------simple routes-----------
+app.get('/', (req, res) => {
+    res.send('this is home page')
+})
+
+app.get('/visit', (req, res) => {
+    if (req.session.page_views) {
+        req.session.page_views++
+        res.send(`you visited this page ${req.session.page_views} times`)
+    } else {
+        req.session.page_views = 1
+        res.send('welcome to this page for the first time')
+    }
 })
 
 app.listen(port, () => {

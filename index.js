@@ -166,13 +166,9 @@ app.get('/fetch', (req, res) => {
 app.get('/remove-cookie', (req, res) => {
     res.clearCookie('bro')
     res.send('cookie removed successfully')
-})*/
-
-// ----------simple routes-----------
-app.get('/', (req, res) => {
-    res.send('this is home page')
 })
 
+// ----------this is about session by using routes-----------
 app.get('/visit', (req, res) => {
     if (req.session.page_views) {
         req.session.page_views++
@@ -183,10 +179,43 @@ app.get('/visit', (req, res) => {
     }
 })
 
+// ----------this is about how to remove session by using routes-----------
 app.get('/remove-visit', (req, res) => {
     req.session.destroy()
     res.send('session removed successfully')
+})*/
+
+const users = []
+
+// ----------simple routes-----------
+app.get('/', (req, res) => {
+    res.send('this is home page')
 })
+
+app.post('/register', async(req, res) => {
+    const { username, password} = req.body 
+    users.push({username, password})
+    res.send('user registered successfully')
+})
+
+app.post('/login', async(req, res) => {
+    const { username, password} = req.body  
+    const user = users.find(u => u.username === username)
+    
+    if (!user || password !== user.password) {
+        return res.send('not autorized')
+    }
+    req.session.user = user
+    res.send('user logged in successfully')
+})
+
+app.get('/dashboard', (req,res) => {
+    if (!req.session.user) {
+        return res.send('unoutorized')
+    }
+    res.send(`welcom ,${req.session.user.username}`)
+})
+
 
 app.listen(port, () => {
     console.log(`server in running on http://localhost:${port}`)

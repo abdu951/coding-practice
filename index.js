@@ -23,6 +23,17 @@ app.use(session({
     saveUninitialized: false
 }))
 
+//----------handling error by using event listeners-----------
+process.on('uncaughtException', (err) => {
+    console.log(err)
+    process.exit(1)
+})
+
+//----------handling error by using event listeners-----------
+process.on('unhandledRejection', (reason, promise) => {
+    console.log(reason)
+})
+
 
 //app.use('/user',router)
 

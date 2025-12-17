@@ -188,14 +188,14 @@ app.get('/remove-visit', (req, res) => {
 })
 
 
-// ----------register: this is about authentication by using session method in routes-----------
+// ----------: this is about registration(sign up) by using session method in routes-----------
 app.post('/register', async(req, res) => {
     const { username, password} = req.body 
     users.push({username, password})
     res.send('user registered successfully')
 })
 
-// ----------login: this is about authentication by using session method in routes-----------
+// ----------this is about authentication(log in) by using session method in routes-----------
 app.post('/login', async(req, res) => {
     const { username, password} = req.body  
     const user = users.find(u => u.username === username)
@@ -207,21 +207,18 @@ app.post('/login', async(req, res) => {
     res.send('user logged in successfully')
 })
 
-// ----------dashboard: this is about authentication by using session method in routes-----------
+// ----------this is about access permission(admin dashbord) by using session method in routes-----------
 app.get('/dashboard', (req,res) => {
     if (!req.session.user) {
         return res.send('unoutorized')
     }
     res.send(`welcom ,${req.session.user.username}`)
-})*/
-const users = []
-
-// ----------simple routes-----------
-app.get('/', (req, res) => {
-    res.send('this is home page')
 })
 
-// ----------register: this is about authentication by using jwt method in routes-----------
+// ----------this is using as like a fake database-----------
+const users = []
+
+// ----------this is about registration(sign up) by using jwt method in routes-----------
 app.post('/register', async(req, res) => {
     const { username, password} = req.body 
     const hashedpassword = await bcrypt.hash(password, 10)
@@ -229,7 +226,7 @@ app.post('/register', async(req, res) => {
     res.send('user registered successfully')
 })
 
-// ----------login: this is about authentication by using jwt method in routes-----------
+// ----------this is about authentication(log in) by using jwt method in routes-----------
 app.post('/login', async(req, res) => {
     const { username, password} = req.body  
     const user = users.find(u => u.username === username)
@@ -241,11 +238,11 @@ app.post('/login', async(req, res) => {
     res.send({token})
 })
 
-// ----------dashboard: this is about authentication by using jwt method in routes-----------
+// ----------this is about access permission(admin dashbord) by using jwt method in routes-----------
 app.get('/dashboard', (req,res) => {
     try{
        const token = req.header('authorization')
-    const decodedtoken = jwt.verify(token, 'test#secret')
+       const decodedtoken = jwt.verify(token, 'test#secret')
     if (decodedtoken.username) {
         res.send(`welcom ,${decodedtoken.username}`)
     }
@@ -255,7 +252,25 @@ app.get('/dashboard', (req,res) => {
         res.send('access denied')
     }
     
+})*/
+
+// ----------simple routes-----------
+app.get('/', (req, res) => {
+    res.send('this is home page')
 })
+
+//----------get all products routes-----------
+app.get('/api/products', (req, res) => {
+    const products = [
+        {id: 1, name: "laptop", price: 1000},
+        {id: 2, name: "mobile", price: 2000},
+        {id: 3, name: "tablet", price: 3000},
+    ]
+
+    res.status(200).json({products})
+})
+
+
 
 app.listen(port, () => {
     console.log(`server in running on http://localhost:${port}`)

@@ -270,6 +270,7 @@ app.get('/api/products', (req, res) => {
     res.status(200).json({products})
 })
 
+//----------get single product routes-----------
 app.get('/api/products/:id', (req, res) => {
     const products = [
         {id: 1, name: "laptop", price: 1000},
@@ -284,6 +285,12 @@ app.get('/api/products/:id', (req, res) => {
     }
     
     res.status(200).json(product)
+})
+
+app.post('/api/products', (req, res) => {
+    const newproduct = req.body
+    newproduct.id = Date.now()
+    res.status(201).json(newproduct)
 })
 
 

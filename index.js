@@ -294,6 +294,7 @@ app.get('/', (req, res) => {
     res.send('this is home page')
 })
 
+// ----------sync error routes-----------
 app.get('/sync-error', (req, res, next) => {
     try {
         throw new Error('something went wrong')
@@ -302,12 +303,20 @@ app.get('/sync-error', (req, res, next) => {
     }
 })
 
+// ----------async error routes-----------
 app.get('/async-error', async(req, res, next) => {
     try {
         await Promise.reject(new Error('async error occured'))
     } catch (error) {
         next(error)
     }
+})
+
+// ----------error handler middleware routes-----------
+app.use((err, req, res, next) => {
+    console.error(err.message)
+    console.log(err.stack)
+    res.status(500).json({message: err.message})
 })
 
 

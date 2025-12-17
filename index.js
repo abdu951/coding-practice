@@ -270,6 +270,22 @@ app.get('/api/products', (req, res) => {
     res.status(200).json({products})
 })
 
+app.get('/api/products/:id', (req, res) => {
+    const products = [
+        {id: 1, name: "laptop", price: 1000},
+        {id: 2, name: "mobile", price: 2000},
+        {id: 3, name: "tablet", price: 3000},
+    ]
+
+    const product = products.find(p=> p.id === Number(req.params.id))
+
+    if (!product) {
+        return res.status(404).json({message: "product not found"})
+    }
+    
+    res.status(200).json(product)
+})
+
 
 
 app.listen(port, () => {

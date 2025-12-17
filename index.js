@@ -252,14 +252,9 @@ app.get('/dashboard', (req,res) => {
         res.send('access denied')
     }
     
-})*/
-
-// ----------simple routes-----------
-app.get('/', (req, res) => {
-    res.send('this is home page')
 })
 
-//----------get all products routes-----------
+//----------get all products & using status code routes-----------
 app.get('/api/products', (req, res) => {
     const products = [
         {id: 1, name: "laptop", price: 1000},
@@ -270,7 +265,7 @@ app.get('/api/products', (req, res) => {
     res.status(200).json({products})
 })
 
-//----------get single product routes-----------
+//----------get single product & using status code routes-----------
 app.get('/api/products/:id', (req, res) => {
     const products = [
         {id: 1, name: "laptop", price: 1000},
@@ -287,11 +282,26 @@ app.get('/api/products/:id', (req, res) => {
     res.status(200).json(product)
 })
 
+//----------create product & using status code routes-----------
 app.post('/api/products', (req, res) => {
     const newproduct = req.body
     newproduct.id = Date.now()
     res.status(201).json(newproduct)
+})*/
+
+// ----------simple routes-----------
+app.get('/', (req, res) => {
+    res.send('this is home page')
 })
+
+app.get('/sync-error', (req, res, next) => {
+    try {
+        throw new Error('something went wrong')
+    } catch (error) {
+        next(error)
+    }
+})
+
 
 
 

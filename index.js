@@ -302,6 +302,13 @@ app.get('/sync-error', (req, res, next) => {
     }
 })
 
+app.get('/async-error', async(req, res, next) => {
+    try {
+        await Promise.reject(new Error('async error occured'))
+    } catch (error) {
+        next(error)
+    }
+})
 
 
 

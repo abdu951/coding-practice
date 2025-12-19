@@ -96,13 +96,13 @@ app.use((err, req, res, next) => {
     console.error(err.message)
     res.send('this is an inernal server error')
 
------------------templete engine routes----------------
+//-----------------templete engine routes----------------
+//------------------set ejs has view default engine------------
  app.set('view engine', 'ejs')
 
 app.get('/', (req, res) => {
     const username = 'seya'
     res.render('index', {username})
-})
 })
 
 ---------------how to serve static files routes in express------------
@@ -304,6 +304,7 @@ app.post('/api/products', (req, res) => {
 app.get('/', (req, res) => {
     res.send('this is home page')
 })
+
 
 // ----------sync error routes-----------
 app.get('/sync-error', (req, res, next) => {

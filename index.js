@@ -274,7 +274,7 @@ app.get('/api/products', (req, res) => {
     ]
 
     res.status(200).json({products})
-})
+})*/
 
 //----------get single product & using status code routes-----------
 app.get('/api/products/:id', (req, res) => {
@@ -291,7 +291,7 @@ app.get('/api/products/:id', (req, res) => {
     }
     
     res.status(200).json(product)
-})*/
+})
 
 //----------create product & using status code routes-----------
 app.post('/api/products', (req, res) => {

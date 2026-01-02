@@ -230,7 +230,7 @@ app.get('/dashboard', (req,res) => {
 const users = []
 
 // ----------this is about registration(sign up) by using jwt method in routes-----------
-app.post('/register', async(req, res) => {
+app.post('/registerr', async(req, res) => {
     const { username, password} = req.body 
     const hashedpassword = await bcrypt.hash(password, 10)
     users.push({username, password: hashedpassword})
@@ -238,7 +238,7 @@ app.post('/register', async(req, res) => {
 })
 
 // ----------this is about authentication(log in) by using jwt method in routes-----------
-app.post('/login', async(req, res) => {
+app.post('/loginn', async(req, res) => {
     const { username, password} = req.body  
     const user = users.find(u => u.username === username)
     
@@ -250,7 +250,7 @@ app.post('/login', async(req, res) => {
 })
 
 // ----------this is about access permission(admin dashbord) by using jwt method in routes-----------
-app.get('/dashboard', (req,res) => {
+app.get('/dashboardd', (req,res) => {
     try{
        const token = req.header('authorization')
        const decodedtoken = jwt.verify(token, 'test#secret')
@@ -274,7 +274,7 @@ app.get('/api/products', (req, res) => {
     ]
 
     res.status(200).json({products})
-})*/
+})
 
 //----------get single product & using status code routes-----------
 app.get('/api/products/:id', (req, res) => {
@@ -298,7 +298,7 @@ app.post('/api/products', (req, res) => {
     const newproduct = req.body
     newproduct.id = Date.now()
     res.status(201).json(newproduct)
-})
+})*/
 
 // ----------simple routes-----------
 app.get('/', (req, res) => {

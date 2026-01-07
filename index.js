@@ -302,7 +302,7 @@ app.post('/api/products', (req, res) => {
 
 // ----------simple routes-----------
 app.get('/', (req, res) => {
-    res.send('this is home page')
+    res.send('this is user home page')
 })
 
 

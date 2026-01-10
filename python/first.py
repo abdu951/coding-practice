@@ -108,7 +108,7 @@ print(a <= b)
 # another comparison operators
 print("bag" > "apple")  # True: i will come back to this
 print("bag" > "BAG")  # True: the numeric representation of "b" is 98, the numeric representation of "B" is 66
-"""
+
 
 # conditional statements in python: conditional statements are indentation or spaces sensetive
 temperature = 35
@@ -120,4 +120,29 @@ elif temperature > 20:
     print("it's nice")
 else:
     print("it's cold")
-print("done")
+print("done") 
+
+# ternery operator in python: i will come back to this how to add elif statement
+temperature = 30
+message = "it's hot" if temperature > 30 else "it's not hot"
+print(message) """
+
+# logical operators in python
+high_income = True
+good_credit = True
+student = False
+
+if high_income and good_credit and not student:
+    print("eligible")
+else:
+    print("not eligible")
+
+if (high_income or good_credit) and student:
+    print("eligible")
+else:
+    print("not eligible")
+
+if not student:
+    print("eligible")
+else:
+    print("not eligible")

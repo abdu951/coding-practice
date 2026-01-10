@@ -125,8 +125,9 @@ print("done")
 # ternery operator in python: i will come back to this how to add elif statement
 temperature = 30
 message = "it's hot" if temperature > 30 else "it's not hot"
-print(message) """
+print(message) 
 
+# short-circuit evaluation: in python logical operators are short-circuit evaluated which means if the first operand is false then the second operand will not be evaluated
 # logical operators in python
 high_income = True
 good_credit = True
@@ -145,4 +146,144 @@ else:
 if not student:
     print("eligible")
 else:
-    print("not eligible")
+    print("not eligible") 
+
+# chaining comparison operators in python
+# age should be between 18 and 65
+age = 22
+if 18 <= age < 65:
+    print("eligible")
+else:
+    print("not eligible")  
+
+# quiz question
+
+if 10 == "10":
+    print('a')
+elif "bag" > "apple" and "bag" > "cat":
+    print('b')
+else:
+    print('c') 
+
+# for loop in python
+for i in range(1, 10, 2):
+    print("attempt", i, i * ".") 
+
+# for...else loop in python
+successful = True
+for i in range(3):
+    print("attempt")
+    if successful:
+        print("successful")
+        break
+else:
+    print("failed after 3 attempts") 
+
+# nested loop in python
+for i in range(1, 4):
+    for j in range(1, 4):
+        print(i, j)  
+
+# iterables in python
+for x in [1, 2, 3, 4, 5]:
+    print(x)
+
+for item in 'shopning_list':
+    print(item)  
+
+# while loop in python
+i = 1
+while i <= 10:
+    print(i)
+    i += 1  
+
+# infinite loop in python: is running until the condition is false
+i = 1
+while True:
+    print(i)
+    i += 1
+    if i > 10:
+        break 
+# quiz question: show the even numbers from 1 to 10
+i = 2
+while True:
+    print(i)
+    i += 2
+    if i >= 10:
+        print("we have 4 even numbers")
+        break
+
+# another way to show the even numbers from 1 to 10
+count = 0
+for number in range(1, 10):
+    if number % 2 == 0:
+        count += 1
+        print(number)
+print(f"we have {count} even numbers") 
+
+# in python all functions return none value by default
+# functions in python
+def greet():
+    print("hello")
+    print("how are you")
+    print("i am fine")
+
+
+greet()
+
+# arguments in python
+
+
+def greet(first_name, last_name):
+    print(f"hello {first_name} {last_name}")
+    print("how are you")
+    print("i am fine") 
+
+
+greet("abdu", "mame")
+greet("seya", "mame")   
+
+# types of functions in python: in programming we have two types of functions 1, perform a task 2, return a value
+
+# perform a task function
+def greet(name):
+    print(f"hello {name}")
+
+
+greet("abdu")
+
+# return a value function
+def square(number):
+    return number * number
+
+
+result = square(3)
+print(result)  
+
+# keyword arguments in python
+def increment(number, by):
+    return number + by
+
+
+print(increment(number=3, by=2)) # this is keyword arguments 
+
+# default arguments in python: all the optional arguments should be at the end
+
+
+def increment(number=2, by=1):  # this is default arguments
+    return number + by
+
+
+print(increment(3, 2)) """
+
+# args, wait, what
+
+
+def multiply(*number):
+    total = 2
+    for num in number:
+        total *= num
+    return total
+
+
+print(multiply(2, 3, 4, 5))

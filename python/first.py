@@ -109,3 +109,15 @@ print(a <= b)
 print("bag" > "apple")  # True: i will come back to this
 print("bag" > "BAG")  # True: the numeric representation of "b" is 98, the numeric representation of "B" is 66
 """
+
+# conditional statements in python: conditional statements are indentation or spaces sensetive
+temperature = 35
+
+if temperature > 30:
+    print("it's hot")
+    print("drink water")
+elif temperature > 20:
+    print("it's nice")
+else:
+    print("it's cold")
+print("done")

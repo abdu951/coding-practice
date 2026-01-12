@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
 
@@ -27,3 +27,12 @@ def create_item(item: Item):
 @app.get('/limited', response_model=list[Item])
 def limited_items(limit: int = 5):
     return items[0:limit]
+
+
+@app.get('/items/{item_id}', response_model=Item)
+def read_item(item_id: int) -> Item:
+    if item_id < len(items):
+        return items[item_id]
+    else:
+        raise HTTPException(
+            status_code=404, detail=f"Item {item_id} not found")

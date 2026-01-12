@@ -22,3 +22,8 @@ async def root():
 def create_item(item: Item):
     items.append(item)
     return items
+
+
+@app.get('/limited', response_model=list[Item])
+def limited_items(limit: int = 5):
+    return items[0:limit]

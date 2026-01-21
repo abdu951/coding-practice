@@ -1,6 +1,7 @@
-# dice rolling game
 import random
 
+
+# dice rolling game
 """while True:
     choice = input('Roll the dice? (y/n): ').lower()
     if choice == 'y':
@@ -11,7 +12,7 @@ import random
         print('Thanks for playing!')
         break
     else:
-        print('Invalid choice!') """
+        print('Invalid choice!')
 
 
 # number guessing game
@@ -31,4 +32,37 @@ while True:
             print('Congratulations! You guessed the number.')
             break
     except ValueError:
-        print('Please enter a valid number.')
+        print('Please enter a valid input.')  """
+
+
+# rock, paper, scissors game
+choices = ('r', 'p', 's')
+emojis = {'p': '📄', 's': '✂', 'r': '🌑'}  # this are python dictionary method.
+
+while True:
+    user_choice = input('rock, paper, or scissors? (r/p/s): ').lower()
+
+    if user_choice not in choices:
+        print('invalid choice!')
+        continue
+
+    computer_choice = random.choice(choices)
+
+    print(f'you choose: {emojis[user_choice]}')
+    print(f'computer choose: {emojis[computer_choice]}')
+
+    if user_choice == computer_choice:
+        print('Tie!')
+    elif (
+         (user_choice == 'r' and computer_choice == 's') or
+         (user_choice == 's' and computer_choice == 'p') or
+         (user_choice == 'p' and computer_choice == 'r')
+    ):
+        print('you win!')
+    else:
+        print('you lose!')
+
+    should_continue = input('do you want to continue? (y/n): ').lower()
+    if should_continue == 'n':
+        print('Thanks for playing!')
+        break

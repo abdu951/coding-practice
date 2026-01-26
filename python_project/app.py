@@ -1,20 +1,7 @@
 import random
 
 
-# dice rolling game
-"""while True:
-    choice = input('Roll the dice? (y/n): ').lower()
-    if choice == 'y':
-        die1 = random.randint(1, 6)
-        die2 = random.randint(1, 6)
-        print(f'({die1}, {die2})')
-    elif choice == 'n':
-        print('Thanks for playing!')
-        break
-    else:
-        print('Invalid choice!')
-
-
+""""
 # number guessing game
 secret_number = random.randint(1, 100)
 
@@ -34,6 +21,22 @@ while True:
     except ValueError:
         print('Please enter a valid input.')  
 
+
+
+ # dice rolling game   
+    while True:
+    choice = input('Roll the dice? (y/n): ').lower()
+    if choice == 'y':
+        die1 = random.randint(1, 6)
+        die2 = random.randint(1, 6)
+        print(f'({die1}, {die2})')
+    elif choice == 'n':
+        print('Thanks for playing!')
+        break
+    else:
+        print('Invalid choice!')    
+
+        
 
 # rock, paper, scissors game
 emojis = {'p': '📄', 's': '✂', 'r': '🌑'}  # this are python dictionary method.

@@ -24,8 +24,7 @@ while True:
 
 
  # dice rolling game   
-    while True:
-    choice = input('Roll the dice? (y/n): ').lower()
+    
     
      
 

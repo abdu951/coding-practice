@@ -33,8 +33,7 @@ while True:
     elif choice == 'n':
         print('Thanks for playing!')
         break
-    else:
-        print('Invalid choice!')    
+     
 
         
 

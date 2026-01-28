@@ -3,7 +3,7 @@ import random
 
 """"
 # number guessing game
-secret_number = random.randint(1, 100)
+
 
 while True:
    

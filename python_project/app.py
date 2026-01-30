@@ -17,7 +17,8 @@ while True:
             print('Please enter a number between 1 and 100.')
         else:
             print('Congratulations! You guessed the number.')
-            break
+            
+            
             
         
 

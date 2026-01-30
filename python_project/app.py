@@ -13,8 +13,6 @@ while True:
             print('Your guess is too low.')
         elif guess > secret_number and guess < 100:
             print('Your guess is too high.')
-        elif guess < 1 or guess > 100:
-            print('Please enter a number between 1 and 100.')
         
             
             

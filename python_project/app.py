@@ -8,7 +8,7 @@ import random
 while True:
    
 
-        guess = int(input('guess the number between 1 and 100: '))
+        
         
             
         

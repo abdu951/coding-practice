@@ -9,7 +9,7 @@ while True:
    
 
         guess = int(input('guess the number between 1 and 100: '))
-        if guess < secret_number and guess > 1:
+        
             
         
             

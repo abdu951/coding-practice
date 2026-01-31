@@ -5,7 +5,7 @@ import random
 # number guessing game
 
 
-while True:
+
    
 
         

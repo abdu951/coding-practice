@@ -2,8 +2,6 @@ import random
 
 
 """"
-# number guessing game
-
 
 
    

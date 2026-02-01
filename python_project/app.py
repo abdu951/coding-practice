@@ -50,7 +50,7 @@ while True:
         print('you lose!')
 
     should_continue = input('do you want to continue? (y/n): ').lower()
-    if should_continue == 'n':
+    
         
           """
 # USING DRY PRINCIPLE which menas don't repeat yourself so declare the variables as constants and use them every where in the program

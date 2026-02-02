@@ -49,7 +49,7 @@ while True:
     else:
         print('you lose!')
 
-    should_continue = input('do you want to continue? (y/n): ').lower()
+    
     
         
           """

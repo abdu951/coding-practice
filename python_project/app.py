@@ -46,7 +46,7 @@ while True:
          (user_choice == 'p' and computer_choice == 'r')
     ):
         print('you win!')
-    else:
+    
         
 
     

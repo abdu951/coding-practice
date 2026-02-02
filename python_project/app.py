@@ -45,7 +45,7 @@ while True:
          (user_choice == 's' and computer_choice == 'p') or
          (user_choice == 'p' and computer_choice == 'r')
     ):
-        print('you win!')
+        
     
         
 

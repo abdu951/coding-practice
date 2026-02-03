@@ -43,8 +43,7 @@ while True:
     elif (
          (user_choice == 'r' and computer_choice == 's') or
          (user_choice == 's' and computer_choice == 'p') or
-         (user_choice == 'p' and computer_choice == 'r')
-    ):
+         
         
     
         

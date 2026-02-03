@@ -40,7 +40,7 @@ while True:
 
     if user_choice == computer_choice:
         print('Tie!')
-    elif (
+    
          
          
          

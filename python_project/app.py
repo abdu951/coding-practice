@@ -42,7 +42,7 @@ while True:
         print('Tie!')
     elif (
          (user_choice == 'r' and computer_choice == 's') or
-         (user_choice == 's' and computer_choice == 'p') or
+         
          
         
     

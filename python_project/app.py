@@ -33,8 +33,7 @@ while True:
         print('invalid choice!')
         continue
 
-    computer_choice = random.choice(choices)
-
+    
     
     
        

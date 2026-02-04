@@ -38,7 +38,7 @@ while True:
     print(f'you choose: {emojis[user_choice]}')
     print(f'computer choose: {emojis[computer_choice]}')
 
-    if user_choice == computer_choice:
+    
        
     
          

@@ -39,7 +39,7 @@ while True:
     print(f'computer choose: {emojis[computer_choice]}')
 
     if user_choice == computer_choice:
-        print('Tie!')
+       
     
          
          

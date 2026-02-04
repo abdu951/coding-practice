@@ -35,9 +35,7 @@ while True:
 
     computer_choice = random.choice(choices)
 
-    print(f'you choose: {emojis[user_choice]}')
-    print(f'computer choose: {emojis[computer_choice]}')
-
+    
     
        
     

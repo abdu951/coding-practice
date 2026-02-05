@@ -27,7 +27,7 @@ emojis = {'p': '📄', 's': '✂', 'r': '🌑'}  # this are python dictionary me
 choices = ('r', 'p', 's')
 
 while True:
-    user_choice = input('rock, paper, or scissors? (r/p/s): ').lower()
+    
 
     
         

@@ -29,7 +29,7 @@ choices = ('r', 'p', 's')
 while True:
     user_choice = input('rock, paper, or scissors? (r/p/s): ').lower()
 
-    if user_choice not in choices:
+    
         
        
 

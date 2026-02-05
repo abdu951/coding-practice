@@ -31,7 +31,7 @@ while True:
 
     if user_choice not in choices:
         print('invalid choice!')
-        continue
+       
 
     
     

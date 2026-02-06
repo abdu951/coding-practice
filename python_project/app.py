@@ -24,7 +24,6 @@ import random
 
 # rock, paper, scissors game
 emojis = {'p': '📄', 's': '✂', 'r': '🌑'}  # this are python dictionary method.
-choices = ('r', 'p', 's')
 
 
     

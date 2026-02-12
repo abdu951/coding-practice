@@ -98,7 +98,7 @@ def play_game():
 
         should_continue = input('do you want to continue? (y/n): ').lower()
         if should_continue == 'n':
-            print('Thanks for playing!')
+           
            
 
 

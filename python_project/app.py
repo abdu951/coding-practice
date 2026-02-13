@@ -96,7 +96,7 @@ def play_game():
 
         determine_winner(user_choice, computer_choice)
 
-        should_continue = input('do you want to continue? (y/n): ').lower()
+        
         
            
 

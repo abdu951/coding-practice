@@ -94,8 +94,7 @@ def play_game():
 
         display_choices(user_choice, computer_choice)
 
-        determine_winner(user_choice, computer_choice)
-
+       
         
         
            

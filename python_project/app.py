@@ -92,8 +92,7 @@ def play_game():
 
         computer_choice = random.choice(choices)
 
-        display_choices(user_choice, computer_choice)
-
+        
        
         
         

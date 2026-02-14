@@ -90,7 +90,7 @@ def play_game():
     while True:
         user_choice = get_user_choice()
 
-        computer_choice = random.choice(choices)
+        
 
         
        

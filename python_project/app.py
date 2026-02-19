@@ -87,8 +87,7 @@ def determine_winner(user_choice, computer_choice):
 
 
 def play_game():
-    while True:
-        
+    
 
         
 

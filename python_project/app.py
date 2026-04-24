@@ -83,19 +83,8 @@ def determine_winner(user_choice, computer_choice):
     ):
         print('you win!')
     else:
-        print('you lose!')
+        print('you lose!') """
 
 
 
     
-
-        
-
-        
-       
-        
-        
-           
-
-
-

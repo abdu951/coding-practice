@@ -1,9 +1,7 @@
 
 import random
 
-
-
-          """
+"""
 # USING DRY PRINCIPLE which menas don't repeat yourself so declare the variables as constants and use them every where in the program
 ROCK = 'r'
 PAPER = 'p'

@@ -23,7 +23,7 @@ app.use(session({
     saveUninitialized: false
 }))
 
-//----------handling error by using event listeners-----------
+//----------handling error by using event listeners-------
 process.on('uncaughtException', (err) => {
     console.log(err)
     process.exit(1)

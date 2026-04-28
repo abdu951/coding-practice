@@ -8,7 +8,7 @@ PAPER = 'p'
 SCISSORS = 's'
 
 # this are python dictionary method.
-emojis = {PAPER: '📄', SCISSORS: '✂', ROCK: '🌑'}
+emojis = {PAPER: '📄', SCISSORS: '✂', ROCK: '🌑'} 
 choices = tuple(emojis.keys())
 
 

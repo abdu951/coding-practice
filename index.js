@@ -276,7 +276,7 @@ app.get('/api/products', (req, res) => {
     res.status(200).json({products})
 })
 
-//----------get single product & using status code routes-------
+//------get single product & using status code routes-------
 app.get('/api/products/:id', (req, res) => {
     const products = [
         {id: 1, name: "laptop", price: 1000},

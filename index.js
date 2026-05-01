@@ -293,7 +293,7 @@ app.get('/api/products/:id', (req, res) => {
     res.status(200).json(product)
 })*/
 
-//----------create product & using status code routes-----------
+//----------create product & using status code routes--------
 app.post('/api/products', (req, res) => {
     const newproduct = req.body
     newproduct.id = Date.now()

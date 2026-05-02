@@ -306,7 +306,7 @@ app.get('/', (req, res) => {
 })
 
 
-// ----------sync error routes-----------
+// --------sync error routes-----------
 app.get('/sync-error', (req, res, next) => {
     try {
         throw new Error('something went wrong')

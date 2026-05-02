@@ -300,7 +300,7 @@ app.post('/api/products', (req, res) => {
     res.status(201).json(newproduct)
 })
 
-// ----------simple routes-----------
+// ----------simple routes---------
 app.get('/', (req, res) => {
     res.send('this is user home page')
 })

@@ -91,7 +91,7 @@ app.get('/error',() => {
     throw new Error('something went wrong')
 })
 
-// note: error middleware site always after routes or at the bottom----------
+// note: error middleware site always after routes or at the bottom--------
 app.use((err, req, res, next) => {
     console.error(err.message)
     res.send('this is an inernal server error')

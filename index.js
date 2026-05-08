@@ -96,7 +96,7 @@ app.use((err, req, res, next) => {
     console.error(err.message)
     res.send('this is an inernal server error')
 
-//--------------templete engine routes------------
+//------------templete engine routes------------
 //------------set ejs has view default engine----------
  app.set('view engine', 'ejs')
 
